@@ -47,6 +47,20 @@ app.put("/projects/:id", (req, res) =>{
 
 });
 
+app.delete("/projects/:id", (req, res) => {
+  const { id } = req.params;
+
+  const projectIndex = projects.findIndex(project => project.id === id);
+
+  if(projectIndex < 0) {
+    return res.status(401).json({error: "Project not found" });
+  }
+
+  projects.splice(projectIndex, 1);
+
+  return res.status(200).send();
+});
+
 app.listen(3333,
   console.log("Rodando o Backend")  
 );
