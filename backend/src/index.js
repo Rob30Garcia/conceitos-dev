@@ -1,5 +1,13 @@
-import express from "express";
+import express, { response } from "express";
 
 const app = express();
 
-app.listen(3333);
+app.get("/projects", (req, res) => {
+  return res.json({
+    mensagem: "Hello, World!"
+  });
+});
+
+app.listen(3333,
+  console.log("Rodando o Backend")  
+);
