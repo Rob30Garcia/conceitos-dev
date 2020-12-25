@@ -2,10 +2,10 @@ import express, { response } from "express";
 
 const app = express();
 
+const projects = ["project 1", "project 2" ];
+
 app.get("/projects", (req, res) => {
-  return res.json({
-    mensagem: "Hello, World!"
-  });
+  return res.json(projects);
 });
 
 app.listen(3333,
