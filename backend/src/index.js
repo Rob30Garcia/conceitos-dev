@@ -1,4 +1,5 @@
-import express, { response } from "express";
+import express from "express";
+import { v4 } from "uuid";
 
 const app = express();
 
@@ -12,7 +13,9 @@ app.get("/projects", (req, res) => {
 
 app.post("/projects", (req, res) => {
   const {title, owner} = req.body;
+
   const project = {
+    id: v4(),
     title,
     owner
   };
