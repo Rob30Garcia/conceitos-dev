@@ -7,7 +7,20 @@ app.use(express.json());
 
 const projects = [];
 
-app.get("/projects", (req, res) => {
+//formato dos middleware
+function logRequest(req, res, next) {
+  const { method, url } = req;
+  
+  const logLabel = `[${method.toUpperCase()}] ${url}`;
+
+  console.log(logLabel);
+
+  next();
+}
+
+//app.use(logRequest);
+
+app.get("/projects", logRequest ,(req, res) => {
   return res.json(projects);
 });
 
